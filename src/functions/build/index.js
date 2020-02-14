@@ -62,3 +62,16 @@ function copyFiles(srcPath, destPath, opt_isFlatten, opt_srcOptions, opt_destOpt
     return gulp.src(srcPath, opt_srcOptions)
         .pipe(gulp.dest(destPath, opt_destOptions));
 }
+
+/**
+ * @param {string} destPath
+ * @param {string} fileName
+ * @param {string} fileExtension
+ * @param {string} fileContent
+ * @param {Function} cb
+ */
+function createFile(destPath, fileName, fileExtension, fileContent, cb) {
+    fs.writeFile(destPath + fileName + fileExtension, fileContent, function (result) {
+        cb(result);
+    });
+}
