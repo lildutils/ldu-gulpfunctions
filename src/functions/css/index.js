@@ -26,3 +26,20 @@ function concatCSS(srcPath, destPath, opt_fileName, opt_sassConfig, opt_srcOptio
         .pipe(sass(compilerConfig).on('error', sass.logError))
         .pipe(gulp.dest(destPath, opt_destOptions));
 }
+
+/**
+ * @param {string|Array<string>} srcPath
+ * @param {string} destPath
+ * @param {string=} opt_fileName
+ * @param {Object?} opt_cssminConfig
+ * @param {Object?} opt_srcOptions
+ * @param {Object?} opt_destOptions
+ */
+function minifyCSS(srcPath, destPath, opt_fileName, opt_cssminConfig, opt_srcOptions, opt_destOptions) {
+    const outputFile = opt_fileName || (configs.styleFileName + configs.minifiedSuffix);
+    const minifierConfig = Object.assign({}, configs.cssMinifierConfig, opt_cssminConfig || {});
+    return gulp.src(srcPath, opt_srcOptions)
+        .pipe(cssmin(minifierConfig))
+        .pipe(rename(outputFile + configs.styleFileExtension))
+        .pipe(gulp.dest(destPath, opt_destOptions));
+}
