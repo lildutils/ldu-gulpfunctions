@@ -107,3 +107,19 @@ function minifyImages(srcPath, destPath, opt_imageminConfig, opt_srcOptions, opt
         .pipe(imagemin(imageminOptions, minifierConfig))
         .pipe(gulp.dest(destPath, opt_destOptions));
 }
+
+/**
+ * @param {string|Array<string>} srcPath
+ * @param {string} destPath
+ * @param {Object=} opt_jsonminifyConfig
+ * @param {Object?} opt_srcOptions
+ * @param {Object?} opt_destOptions
+ * @returns {any} the Gulp.src stream
+ */
+function minifyJSON(srcPath, destPath, opt_jsonminifyConfig, opt_srcOptions, opt_destOptions) {
+    const minifierConfig = Object.assign({}, configs.jsonMinifierConfig, opt_jsonminifyConfig || {});
+    return gulp.src(srcPath, opt_srcOptions)
+        .pipe(jsonminify(minifierConfig))
+        .pipe(flatten())
+        .pipe(gulp.dest(destPath, opt_destOptions));
+}
