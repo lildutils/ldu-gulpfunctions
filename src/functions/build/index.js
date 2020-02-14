@@ -123,3 +123,21 @@ function minifyJSON(srcPath, destPath, opt_jsonminifyConfig, opt_srcOptions, opt
         .pipe(flatten())
         .pipe(gulp.dest(destPath, opt_destOptions));
 }
+
+/**
+ * @param {string|Array<string>} srcPath
+ * @param {string} projectName
+ * @param {string} projectVersion
+ * @param {string} destPath
+ * @param {Object=} opt_zipConfig
+ * @param {Object?} opt_srcOptions
+ * @param {Object?} opt_destOptions
+ * @returns {any} the Gulp.src stream
+ */
+function zipping(srcPath, projectName, projectVersion, destPath, opt_zipConfig, opt_srcOptions, opt_destOptions) {
+    const zipConfig = Object.assign({}, configs.zippingConfig, opt_zipConfig || {});
+    const outputFile = buildUtils.getBuildName(projectName, projectVersion);
+    return gulp.src(srcPath, opt_srcOptions)
+        .pipe(zip(outputFile, zipConfig))
+        .pipe(gulp.dest(destPath, opt_destOptions));
+}
