@@ -30,3 +30,17 @@ function cleanFolder(path, opt_pathPrefix, opt_pathSuffix) {
     const folderPathSuffix = opt_pathSuffix || configs.patterns.ALL_FOLDER;
     return del([folderPathPrefix + folderPath + folderPathSuffix]);
 }
+
+/**
+ * @param {string|Array<string>} srcPath
+ * @param {string} destPath
+ * @param {string} outputFile
+ * @param {Object?} opt_srcOptions
+ * @param {Object?} opt_destOptions
+ * @returns {any} the Gulp.src stream
+ */
+function concatFiles(srcPath, destPath, outputFile, opt_srcOptions, opt_destOptions) {
+    return gulp.src(srcPath, opt_srcOptions)
+        .pipe(concat(outputFile))
+        .pipe(gulp.dest(destPath, opt_destOptions));
+}
