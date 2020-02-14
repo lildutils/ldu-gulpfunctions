@@ -44,3 +44,21 @@ function concatFiles(srcPath, destPath, outputFile, opt_srcOptions, opt_destOpti
         .pipe(concat(outputFile))
         .pipe(gulp.dest(destPath, opt_destOptions));
 }
+
+/**
+ * @param {strng|Array<string>} srcPath
+ * @param {strng} destPath
+ * @param {boolean=} opt_isFlatten
+ * @param {Object?} opt_srcOptions
+ * @param {Object?} opt_destOptions
+ * @returns {any} the Gulp.src stream
+ */
+function copyFiles(srcPath, destPath, opt_isFlatten, opt_srcOptions, opt_destOptions) {
+    if (!!opt_isFlatten) {
+        return gulp.src(srcPath, opt_srcOptions)
+            .pipe(flatten())
+            .pipe(gulp.dest(destPath, opt_destOptions));
+    }
+    return gulp.src(srcPath, opt_srcOptions)
+        .pipe(gulp.dest(destPath, opt_destOptions));
+}
