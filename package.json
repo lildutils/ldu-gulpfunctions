@@ -1,0 +1,66 @@
+{
+    "name": "ldu-gulpfunctions",
+    "description": "README.md",
+    "version": "1.0.0",
+    "author": {
+        "name": "LilDutils"
+    },
+    "license": "LICENSE",
+    "homepage": "https://www.ndworks.hu/lildutils/ldu-gulpfunctions",
+    "repository": {
+        "url": "https://bitbucket.org/lildutils/ldu-gulpfunctions.git"
+    },
+    "private": true,
+    "dependencies": {
+        "@cedx/gulp-php-minify": "9.3.0",
+        "dateformat": "3.0.3",
+        "deepmerge": "4.2.2",
+        "del": "5.1.0",
+        "gulp": "4.0.2",
+        "gulp-clean-css": "4.2.0",
+        "gulp-concat": "2.6.1",
+        "gulp-flatten": "0.4.0",
+        "gulp-htmlmin": "5.0.1",
+        "gulp-imagemin": "7.1.0",
+        "gulp-insert": "0.5.0",
+        "gulp-js-minify": "0.0.3",
+        "gulp-jsonminify": "1.1.0",
+        "gulp-rename": "2.0.0",
+        "gulp-sass": "4.0.2",
+        "gulp-typescript": "5.0.1",
+        "gulp-zip": "5.0.1",
+        "hash-generator": "0.1.0",
+        "ldu-gulputils": "file:./lib/ldu-gulputils-1.0.0.tgz",
+        "minimist": "1.2.0",
+        "typescript": "3.7.5",
+        "username": "5.1.0"
+    },
+    "peerDependencies": {
+        "@cedx/gulp-php-minify": "9.3.0",
+        "dateformat": "3.0.3",
+        "deepmerge": "4.2.2",
+        "del": "5.1.0",
+        "gulp": "4.0.2",
+        "gulp-clean-css": "4.2.0",
+        "gulp-concat": "2.6.1",
+        "gulp-flatten": "0.4.0",
+        "gulp-htmlmin": "5.0.1",
+        "gulp-imagemin": "7.1.0",
+        "gulp-insert": "0.5.0",
+        "gulp-js-minify": "0.0.3",
+        "gulp-jsonminify": "1.1.0",
+        "gulp-rename": "2.0.0",
+        "gulp-sass": "4.0.2",
+        "gulp-typescript": "5.0.1",
+        "gulp-zip": "5.0.1",
+        "hash-generator": "0.1.0",
+        "ldu-gulputils": "1.0.0",
+        "minimist": "1.2.0",
+        "typescript": "3.7.5",
+        "username": "5.1.0"
+    },
+    "devDependencies": {
+        "gulp-json-editor": "2.5.4",
+        "merge-stream": "2.0.0"
+    }
+}
