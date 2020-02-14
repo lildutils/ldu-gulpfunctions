@@ -25,3 +25,21 @@ function concatJS(srcPath, destPath, opt_fileName, opt_tsConfig, opt_srcOptions,
         .pipe(concat(outputFile + configs.scriptFileExtension))
         .pipe(gulp.dest(destPath, opt_destOptions));
 }
+
+/**
+ * @param {string|Array<string>} srcPath
+ * @param {string} destPath
+ * @param {string=} opt_fileName
+ * @param {Object=} opt_jsminifyConfig
+ * @param {Object?} opt_srcOptions
+ * @param {Object?} opt_destOptions
+ * @returns {any} the Gulp.src stream
+ */
+function minifyJS(srcPath, destPath, opt_fileName, opt_jsminifyConfig, opt_srcOptions, opt_destOptions) {
+    const outputFile = opt_fileName || (configs.scriptFileName + configs.minifiedSuffix);
+    const minifierConfig = Object.assign({}, configs.jsMinifierConfig, opt_jsminifyConfig || {});
+    return gulp.src(srcPath, opt_srcOptions)
+        .pipe(jsminify(minifierConfig))
+        .pipe(rename(outputFile + configs.scriptFileExtension))
+        .pipe(gulp.dest(destPath, opt_destOptions));
+}
