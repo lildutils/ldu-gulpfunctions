@@ -1,0 +1,16 @@
+{
+    "base": "src",
+    "build": "_build",
+    "dist": "_dist",
+    "README": {
+        "fileName": "README.txt",
+        "content": "Hey there! :)\r\nPlease visit the {HOMEPAGE} to get more informations!\r\n"
+    },
+    "watching": {
+        "events": "all",
+        "delay": 500
+    },
+    "others": [
+        "LICENSE"
+    ]
+}
