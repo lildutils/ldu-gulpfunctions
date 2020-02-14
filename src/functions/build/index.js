@@ -75,3 +75,35 @@ function createFile(destPath, fileName, fileExtension, fileContent, cb) {
         cb(result);
     });
 }
+
+/**
+ * @param {string|Array<string>} srcPath
+ * @param {string} destPath
+ * @param {Object=} opt_imageminConfig
+ * @param {Object?} opt_srcOptions
+ * @param {Object?} opt_destOptions
+ * @returns {any} the Gulp.src stream
+ */
+function minifyImages(srcPath, destPath, opt_imageminConfig, opt_srcOptions, opt_destOptions) {
+    const minifierConfig = Object.assign({}, configs.imageMinifierConfig, opt_imageminConfig || {});
+    const imageminOptions = [
+        imagemin.gifsicle({
+            interlaced: true
+        }),
+        imagemin.jpegtran({
+            progressive: true
+        }),
+        imagemin.optipng({
+            optimizationLevel: 5
+        }),
+        imagemin.svgo({
+            plugins: [
+                { removeViewBox: true },
+                { cleanupIDs: false }
+            ]
+        })
+    ];
+    return gulp.src(srcPath, opt_srcOptions)
+        .pipe(imagemin(imageminOptions, minifierConfig))
+        .pipe(gulp.dest(destPath, opt_destOptions));
+}
