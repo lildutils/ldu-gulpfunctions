@@ -1,0 +1,40 @@
+{
+    "cssMinifierConfig": {
+        "compatibility": "ie8"
+    },
+    "htmlMinifierConfig": {
+        "collapseWhitespace": true
+    },
+    "imageMinifierConfig": {
+        "verbose": false
+    },
+    "jsMinifierConfig": {
+        "silent": true
+    },
+    "jsonMinifierConfig": {},
+    "minifiedSuffix": ".min",
+    "patterns": {
+        "ALL_FOLDER": "/**/*",
+        "EMPTY": ""
+    },
+    "phpCompilerConfig": {},
+    "phpFileExtension": ".php",
+    "phpFileName": "includes",
+    "phpMinifierConfig": {
+        "silent": true
+    },
+    "sassCompilerConfig": {},
+    "scriptFileExtension": ".js",
+    "scriptFileName": "scripts",
+    "styleFileExtension": ".css",
+    "styleFileName": "styles",
+    "tsCompilerConfig": {
+        "module": "none",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "strictNullChecks": true,
+        "sourceMap": false
+    },
+    "zippingConfig": {}
+}
