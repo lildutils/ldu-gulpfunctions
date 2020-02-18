@@ -1,16 +1,15 @@
 {
     "name": "ldu-gulpfunctions",
-    "description": "README.md",
-    "version": "1.0.0",
+    "description": "Gulp Functions for Gulp Tasks",
+    "version": "1.1.0",
     "author": {
-        "name": "LilDutils"
+        "name": "lildworks",
+        "email": "lildworks@gmail.com"
     },
-    "license": "LICENSE",
-    "homepage": "https://www.ndworks.hu/lildutils/ldu-gulpfunctions",
+    "license": "MIT",
     "repository": {
-        "url": "https://bitbucket.org/lildutils/ldu-gulpfunctions.git"
+        "url": "https://github.com/lildutils/ldu-gulpfunctions.git"
     },
-    "private": true,
     "dependencies": {
         "@cedx/gulp-php-minify": "9.3.0",
         "dateformat": "3.0.3",
@@ -30,7 +29,7 @@
         "gulp-typescript": "5.0.1",
         "gulp-zip": "5.0.1",
         "hash-generator": "0.1.0",
-        "ldu-gulputils": "file:./lib/ldu-gulputils-1.0.0.tgz",
+        "ldu-gulputils": "1.2.0",
         "minimist": "1.2.0",
         "typescript": "3.7.5",
         "username": "5.1.0"
@@ -54,7 +53,7 @@
         "gulp-typescript": "5.0.1",
         "gulp-zip": "5.0.1",
         "hash-generator": "0.1.0",
-        "ldu-gulputils": "1.0.0",
+        "ldu-gulputils": "1.2.0",
         "minimist": "1.2.0",
         "typescript": "3.7.5",
         "username": "5.1.0"
