@@ -90,7 +90,7 @@ function minifyImages(srcPath, destPath, opt_imageminConfig, opt_srcOptions, opt
         imagemin.gifsicle({
             interlaced: true
         }),
-        imagemin.jpegtran({
+        imagemin.mozjpeg({
             progressive: true
         }),
         imagemin.optipng({
