@@ -2,7 +2,6 @@ exports.concatJS = concatJS;
 exports.minifyJS = minifyJS;
 
 
-const configs = require('../../configs.json');
 const gulp = require('gulp');
 const concat = require('gulp-concat');
 const jsminify = require('gulp-js-minify');
@@ -18,11 +17,18 @@ const ts = require('gulp-typescript');
  * @param {Object?} opt_destOptions
  */
 function concatJS(srcPath, destPath, opt_fileName, opt_tsConfig, opt_srcOptions, opt_destOptions) {
-    const outputFile = opt_fileName || configs.scriptFileName;
-    const compilerConfig = Object.assign({}, configs.tsCompilerConfig || {}, opt_tsConfig || {});
+    const outputFile = opt_fileName || 'scripts';
+    const compilerConfig = Object.assign({}, {
+        module: 'none',
+        noImplicitAny: true,
+        removeComments: true,
+        preserveConstEnums: true,
+        strictNullChecks: true,
+        sourceMap: false
+    }, opt_tsConfig || {});
     return gulp.src(srcPath, opt_srcOptions)
         .pipe(ts(compilerConfig))
-        .pipe(concat(outputFile + configs.scriptFileExtension))
+        .pipe(concat(outputFile + '.js'))
         .pipe(gulp.dest(destPath, opt_destOptions));
 }
 
@@ -36,10 +42,10 @@ function concatJS(srcPath, destPath, opt_fileName, opt_tsConfig, opt_srcOptions,
  * @returns {any} the Gulp.src stream
  */
 function minifyJS(srcPath, destPath, opt_fileName, opt_jsminifyConfig, opt_srcOptions, opt_destOptions) {
-    const outputFile = opt_fileName || (configs.scriptFileName + configs.minifiedSuffix);
-    const minifierConfig = Object.assign({}, configs.jsMinifierConfig, opt_jsminifyConfig || {});
+    const outputFile = opt_fileName || 'scripts.min';
+    const minifierConfig = Object.assign({}, {}, opt_jsminifyConfig || {});
     return gulp.src(srcPath, opt_srcOptions)
         .pipe(jsminify(minifierConfig))
-        .pipe(rename(outputFile + configs.scriptFileExtension))
+        .pipe(rename(outputFile + '.js'))
         .pipe(gulp.dest(destPath, opt_destOptions));
 }
