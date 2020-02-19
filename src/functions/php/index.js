@@ -10,6 +10,8 @@ const insert = require('gulp-insert');
 const rename = require('gulp-rename');
 
 /**
+ * Compiles and concats PHP files and copies they to given destination path
+ * 
  * @param {string|Array<string>} srcPath
  * @param {string} destPath
  * @param {string=} opt_fileName
@@ -26,6 +28,8 @@ function concatPHP(srcPath, destPath, opt_fileName, opt_srcOptions, opt_destOpti
 }
 
 /**
+ * Minifies PHP files and copies they to given destination path
+ * 
  * @param {string|Array<string>} srcPath
  * @param {string} destPath
  * @param {string=} opt_fileName

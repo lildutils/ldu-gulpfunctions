@@ -9,6 +9,8 @@ const rename = require('gulp-rename');
 const ts = require('gulp-typescript');
 
 /**
+ * Compiles and concats script files and copies they to given destination path
+ * 
  * @param {string|Array<string>} srcPath
  * @param {string} destPath
  * @param {string=} opt_fileName
@@ -33,6 +35,8 @@ function concatJS(srcPath, destPath, opt_fileName, opt_tsConfig, opt_srcOptions,
 }
 
 /**
+ * Minifies script files and copies they to given destination path
+ * 
  * @param {string|Array<string>} srcPath
  * @param {string} destPath
  * @param {string=} opt_fileName

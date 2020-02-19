@@ -6,6 +6,8 @@ const flatten = require('gulp-flatten');
 const htmlmin = require('gulp-htmlmin');
 
 /**
+ * Minifies HTML files and copies they to given destination path
+ * 
  * @param {string|Array<string>} srcPath
  * @param {string} destPath
  * @param {Object=} opt_htmlminConfig

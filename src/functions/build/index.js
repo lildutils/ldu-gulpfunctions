@@ -18,6 +18,8 @@ const fs = require('fs');
 const zip = require('gulp-zip');
 
 /**
+ * Cleans the folder content (files and subfolders recursively) under given path
+ * 
  * @param {string} path
  * @param {string=} opt_pathPrefix
  * @param {string=} opt_pathSuffix
@@ -31,6 +33,8 @@ function cleanFolder(path, opt_pathPrefix, opt_pathSuffix) {
 }
 
 /**
+ * Concats the given source files to one given file and copy it to the given destination path
+ * 
  * @param {string|Array<string>} srcPath
  * @param {string} destPath
  * @param {string} outputFile
@@ -45,6 +49,8 @@ function concatFiles(srcPath, destPath, outputFile, opt_srcOptions, opt_destOpti
 }
 
 /**
+ * Copies the given source files to the given destination path
+ * 
  * @param {strng|Array<string>} srcPath
  * @param {strng} destPath
  * @param {boolean=} opt_isFlatten
@@ -63,6 +69,8 @@ function copyFiles(srcPath, destPath, opt_isFlatten, opt_srcOptions, opt_destOpt
 }
 
 /**
+ * Creates a file with the given content and informations
+ * 
  * @param {string} destPath
  * @param {string} fileName
  * @param {string} fileExtension
@@ -76,6 +84,8 @@ function createFile(destPath, fileName, fileExtension, fileContent, cb) {
 }
 
 /**
+ * Minifies the given source images and copies they to the given destination path
+ * 
  * @param {string|Array<string>} srcPath
  * @param {string} destPath
  * @param {Object=} opt_imageminConfig
@@ -108,6 +118,8 @@ function minifyImages(srcPath, destPath, opt_imageminConfig, opt_srcOptions, opt
 }
 
 /**
+ * Minifies the given source JSON Objects and copies they to the given destination path
+ * 
  * @param {string|Array<string>} srcPath
  * @param {string} destPath
  * @param {Object=} opt_jsonminifyConfig
@@ -124,6 +136,8 @@ function minifyJSON(srcPath, destPath, opt_jsonminifyConfig, opt_srcOptions, opt
 }
 
 /**
+ * Zip the given source path content into the given destination path with the given project informations
+ * 
  * @param {string|Array<string>} srcPath
  * @param {string} projectName
  * @param {string} projectVersion

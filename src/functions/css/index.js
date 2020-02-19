@@ -9,6 +9,8 @@ const rename = require('gulp-rename');
 const sass = require('gulp-sass');
 
 /**
+ * Compiles and concats style files and copies they to given destination path
+ * 
  * @param {string|Array<string>} srcPath
  * @param {string} destPath
  * @param {string=} opt_fileName
@@ -27,6 +29,8 @@ function concatCSS(srcPath, destPath, opt_fileName, opt_sassConfig, opt_srcOptio
 }
 
 /**
+ * Minifies style files and copies they to given destination path
+ * 
  * @param {string|Array<string>} srcPath
  * @param {string} destPath
  * @param {string=} opt_fileName
