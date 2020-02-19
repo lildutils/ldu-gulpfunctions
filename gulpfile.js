@@ -1,10 +1,7 @@
 const packageJson = require('./package.json');
 const configs = require('./gulpconfig.json');
-const buildUtils = require('ldu-gulputils').buildUtils;
 const gulp = require('gulp');
-const jeditor = require('gulp-json-editor');
 const del = require('del');
-const fs = require('fs');
 const exec = require('child_process').exec;
 const merge = require('merge-stream');
 
@@ -33,7 +30,6 @@ gulp.task('copySource', copySource);
 
 function copyPackageJson() {
     return gulp.src(['package.json'])
-        .pipe(jeditor(buildUtils.processPackageFile))
         .pipe(gulp.dest(configs.dist + '/'));
 }
 copyPackageJson.displayName = 'copy:package-json';
@@ -45,21 +41,6 @@ function copyOthers() {
 }
 copyOthers.displayName = 'copy:others';
 gulp.task('copyOthers', copyOthers);
-
-function createMeta(cb) {
-    const readme = configs.README.content.replace('{HOMEPAGE}', packageJson.homepage);
-    fs.writeFile(configs.dist + '/' + configs.README.fileName, readme, function (result) {
-        cb(result);
-    });
-}
-createMeta.displayName = 'create:meta';
-gulp.task('createMeta', createMeta);
-
-function watchFiles() {
-    gulp.watch([configs.base + '/**/*'], configs.watching, copySource);
-}
-watchFiles.displayName = 'watch:files';
-gulp.task('watch', watchFiles);
 
 function createZip(cb) {
     exec('cd ' + configs.dist + ' && npm pack', function (result) {
@@ -82,18 +63,9 @@ function cleanZip() {
 cleanZip.displayName = 'clean:zip';
 gulp.task('cleanZip', cleanZip);
 
-const serveProject = gulp.series(
-    cleanDist,
-    copyFiles,
-    createMeta,
-    watchFiles
-);
-gulp.task('serve', serveProject);
-
 const buildProject = gulp.series(
     cleanDist,
     copyFiles,
-    createMeta,
     createZip,
     copyZip,
     cleanZip

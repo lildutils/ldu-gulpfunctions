@@ -7,7 +7,6 @@ exports.minifyJSON = minifyJSON;
 exports.zipping = zipping;
 
 
-const configs = require('../../configs.json');
 const buildUtils = require('ldu-gulputils').buildUtils;
 const del = require('del');
 const gulp = require('gulp');
@@ -19,19 +18,23 @@ const fs = require('fs');
 const zip = require('gulp-zip');
 
 /**
+ * Cleans the folder content (files and subfolders recursively) under given path
+ * 
  * @param {string} path
  * @param {string=} opt_pathPrefix
  * @param {string=} opt_pathSuffix
  * @returns {any} the Gulp.src stream
  */
 function cleanFolder(path, opt_pathPrefix, opt_pathSuffix) {
-    const folderPathPrefix = opt_pathPrefix || configs.patterns.EMPTY;
+    const folderPathPrefix = opt_pathPrefix || '';
     const folderPath = path;
-    const folderPathSuffix = opt_pathSuffix || configs.patterns.ALL_FOLDER;
+    const folderPathSuffix = opt_pathSuffix || '/**/*';
     return del([folderPathPrefix + folderPath + folderPathSuffix]);
 }
 
 /**
+ * Concats the given source files to one given file and copy it to the given destination path
+ * 
  * @param {string|Array<string>} srcPath
  * @param {string} destPath
  * @param {string} outputFile
@@ -46,6 +49,8 @@ function concatFiles(srcPath, destPath, outputFile, opt_srcOptions, opt_destOpti
 }
 
 /**
+ * Copies the given source files to the given destination path
+ * 
  * @param {strng|Array<string>} srcPath
  * @param {strng} destPath
  * @param {boolean=} opt_isFlatten
@@ -64,6 +69,8 @@ function copyFiles(srcPath, destPath, opt_isFlatten, opt_srcOptions, opt_destOpt
 }
 
 /**
+ * Creates a file with the given content and informations
+ * 
  * @param {string} destPath
  * @param {string} fileName
  * @param {string} fileExtension
@@ -77,6 +84,8 @@ function createFile(destPath, fileName, fileExtension, fileContent, cb) {
 }
 
 /**
+ * Minifies the given source images and copies they to the given destination path
+ * 
  * @param {string|Array<string>} srcPath
  * @param {string} destPath
  * @param {Object=} opt_imageminConfig
@@ -85,7 +94,7 @@ function createFile(destPath, fileName, fileExtension, fileContent, cb) {
  * @returns {any} the Gulp.src stream
  */
 function minifyImages(srcPath, destPath, opt_imageminConfig, opt_srcOptions, opt_destOptions) {
-    const minifierConfig = Object.assign({}, configs.imageMinifierConfig, opt_imageminConfig || {});
+    const minifierConfig = Object.assign({}, { verbose: false }, opt_imageminConfig || {});
     const imageminOptions = [
         imagemin.gifsicle({
             interlaced: true
@@ -109,6 +118,8 @@ function minifyImages(srcPath, destPath, opt_imageminConfig, opt_srcOptions, opt
 }
 
 /**
+ * Minifies the given source JSON Objects and copies they to the given destination path
+ * 
  * @param {string|Array<string>} srcPath
  * @param {string} destPath
  * @param {Object=} opt_jsonminifyConfig
@@ -117,7 +128,7 @@ function minifyImages(srcPath, destPath, opt_imageminConfig, opt_srcOptions, opt
  * @returns {any} the Gulp.src stream
  */
 function minifyJSON(srcPath, destPath, opt_jsonminifyConfig, opt_srcOptions, opt_destOptions) {
-    const minifierConfig = Object.assign({}, configs.jsonMinifierConfig, opt_jsonminifyConfig || {});
+    const minifierConfig = Object.assign({}, { silent: true }, opt_jsonminifyConfig || {});
     return gulp.src(srcPath, opt_srcOptions)
         .pipe(jsonminify(minifierConfig))
         .pipe(flatten())
@@ -125,6 +136,8 @@ function minifyJSON(srcPath, destPath, opt_jsonminifyConfig, opt_srcOptions, opt
 }
 
 /**
+ * Zip the given source path content into the given destination path with the given project informations
+ * 
  * @param {string|Array<string>} srcPath
  * @param {string} projectName
  * @param {string} projectVersion
@@ -135,7 +148,7 @@ function minifyJSON(srcPath, destPath, opt_jsonminifyConfig, opt_srcOptions, opt
  * @returns {any} the Gulp.src stream
  */
 function zipping(srcPath, projectName, projectVersion, destPath, opt_zipConfig, opt_srcOptions, opt_destOptions) {
-    const zipConfig = Object.assign({}, configs.zippingConfig, opt_zipConfig || {});
+    const zipConfig = Object.assign({}, {}, opt_zipConfig || {});
     const outputFile = buildUtils.getBuildName(projectName, projectVersion);
     return gulp.src(srcPath, opt_srcOptions)
         .pipe(zip(outputFile, zipConfig))
