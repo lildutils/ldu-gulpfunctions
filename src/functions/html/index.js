@@ -1,4 +1,3 @@
-exports.concatHTML = concatHTML;
 exports.minifyHTML = minifyHTML;
 
 
