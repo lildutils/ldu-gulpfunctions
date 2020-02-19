@@ -7,7 +7,6 @@ exports.minifyJSON = minifyJSON;
 exports.zipping = zipping;
 
 
-const configs = require('../../configs.json');
 const buildUtils = require('ldu-gulputils').buildUtils;
 const del = require('del');
 const gulp = require('gulp');
@@ -25,9 +24,9 @@ const zip = require('gulp-zip');
  * @returns {any} the Gulp.src stream
  */
 function cleanFolder(path, opt_pathPrefix, opt_pathSuffix) {
-    const folderPathPrefix = opt_pathPrefix || configs.patterns.EMPTY;
+    const folderPathPrefix = opt_pathPrefix || '';
     const folderPath = path;
-    const folderPathSuffix = opt_pathSuffix || configs.patterns.ALL_FOLDER;
+    const folderPathSuffix = opt_pathSuffix || '/**/*';
     return del([folderPathPrefix + folderPath + folderPathSuffix]);
 }
 
@@ -85,7 +84,7 @@ function createFile(destPath, fileName, fileExtension, fileContent, cb) {
  * @returns {any} the Gulp.src stream
  */
 function minifyImages(srcPath, destPath, opt_imageminConfig, opt_srcOptions, opt_destOptions) {
-    const minifierConfig = Object.assign({}, configs.imageMinifierConfig, opt_imageminConfig || {});
+    const minifierConfig = Object.assign({}, { verbose: false }, opt_imageminConfig || {});
     const imageminOptions = [
         imagemin.gifsicle({
             interlaced: true
@@ -117,7 +116,7 @@ function minifyImages(srcPath, destPath, opt_imageminConfig, opt_srcOptions, opt
  * @returns {any} the Gulp.src stream
  */
 function minifyJSON(srcPath, destPath, opt_jsonminifyConfig, opt_srcOptions, opt_destOptions) {
-    const minifierConfig = Object.assign({}, configs.jsonMinifierConfig, opt_jsonminifyConfig || {});
+    const minifierConfig = Object.assign({}, { silent: true }, opt_jsonminifyConfig || {});
     return gulp.src(srcPath, opt_srcOptions)
         .pipe(jsonminify(minifierConfig))
         .pipe(flatten())
@@ -135,7 +134,7 @@ function minifyJSON(srcPath, destPath, opt_jsonminifyConfig, opt_srcOptions, opt
  * @returns {any} the Gulp.src stream
  */
 function zipping(srcPath, projectName, projectVersion, destPath, opt_zipConfig, opt_srcOptions, opt_destOptions) {
-    const zipConfig = Object.assign({}, configs.zippingConfig, opt_zipConfig || {});
+    const zipConfig = Object.assign({}, {}, opt_zipConfig || {});
     const outputFile = buildUtils.getBuildName(projectName, projectVersion);
     return gulp.src(srcPath, opt_srcOptions)
         .pipe(zip(outputFile, zipConfig))
