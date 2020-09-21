@@ -6,8 +6,8 @@ const merge = require('merge-stream');
 
 const configs = {
     "base": "src",
-    "build": "_build",
-    "dist": "_dist",
+    "build": "build",
+    "dist": "dist",
     "watching": {
         "events": "all",
         "delay": 500
