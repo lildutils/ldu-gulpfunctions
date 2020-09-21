@@ -1,7 +1,7 @@
 {
     "name": "ldu-gulpfunctions",
     "description": "Functions for Gulp Tasks",
-    "version": "1.5.3",
+    "version": "1.5.4",
     "author": {
         "name": "lildworks",
         "email": "lildworks@gmail.com"
