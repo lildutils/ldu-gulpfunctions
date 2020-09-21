@@ -208,7 +208,7 @@ npm install
 
 ### Build
 
-Builds this project to the **_dist** folder and creates a zip package from the dist content into the **_build** folder
+Builds this project to the **dist** folder and creates a zip package from the dist content into the **build** folder
 
 ```sh
 gulp build
@@ -216,7 +216,7 @@ gulp build
 
 ## About
 
-To get more informations about this project, or if you have any question or suggestion, please send an email to [me](mailto:lildworks@gmail.com)
+To get more informations about this project, or if you have any question or suggestion, please send an email to [me](mailto:info@lildworks.hu)
 
 ## 
 

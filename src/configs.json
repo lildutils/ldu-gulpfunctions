@@ -1,0 +1,29 @@
+{
+    "phpCompilerConfig": null,
+    "tsCompilerConfig": {
+        "module": "none",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "strictNullChecks": true,
+        "sourceMap": false
+    },
+    "sassCompilerConfig": null,
+    "phpMinifierConfig": {
+        "silent": true
+    },
+    "jsMinifierConfig": {
+        "silent": true
+    },
+    "cssMinifierConfig": {
+        "compatibility": "ie8"
+    },
+    "htmlMinifierConfig": {
+        "collapseWhitespace": true
+    },
+    "imageMinifierConfig": {
+        "verbose": false
+    },
+    "jsonMinifierConfig": null,
+    "zippingConfig": null
+}

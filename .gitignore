@@ -2,18 +2,17 @@
 /.vscode/
 
 # generated
-/_build/
-/_dist/
+/build/
+/dist/
+/tmp/
+/zip/
 
 # dependencies
 /bower_components/
 /node_modules/
 /lib/
+/libs/
 
 # misc
 /npm-debug.log
 /package-lock.json
-
-# ...for development
-/.ldt*/
-.ldt*
