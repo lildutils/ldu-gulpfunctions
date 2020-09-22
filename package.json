@@ -1,7 +1,7 @@
 {
     "name": "ldu-gulpfunctions",
     "description": "Functions for Gulp Tasks",
-    "version": "1.5.5",
+    "version": "1.6.0",
     "author": {
         "name": "lildworks",
         "email": "lildworks@gmail.com"
@@ -11,8 +11,7 @@
         "url": "https://github.com/lildutils/ldu-gulpfunctions.git"
     },
     "scripts": {
-        "build": "gulp build",
-        "publish": "cd dist/ && npm login && npm publish"
+        "build": "gulp build"
     },
     "peerDependencies": {
         "@cedx/gulp-php-minify": "9.3.0",
