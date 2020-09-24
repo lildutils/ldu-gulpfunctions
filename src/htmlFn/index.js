@@ -1,6 +1,3 @@
-exports.minifyHTML = minifyHTML;
-
-
 const gulp = require('gulp');
 const flatten = require('gulp-flatten');
 const htmlmin = require('gulp-htmlmin');
@@ -27,3 +24,5 @@ function minifyHTML(srcPath, destPath, opt_htmlminConfig, opt_isFlatten, opt_src
         .pipe(htmlmin(minifierConfig))
         .pipe(gulp.dest(destPath, opt_destOptions));
 }
+
+exports.minifyHTML = minifyHTML;

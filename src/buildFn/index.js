@@ -1,13 +1,4 @@
-exports.cleanFolder = cleanFolder;
-exports.concatFiles = concatFiles;
-exports.copyFiles = copyFiles;
-exports.createFile = createFile;
-exports.minifyImages = minifyImages;
-exports.minifyJSON = minifyJSON;
-exports.zipping = zipping;
-
-
-const buildUtils = require('ldu-gulputils').buildUtils;
+const buildUtils = require('@ldu-devtools/gulputils').buildUtils;
 const del = require('del');
 const gulp = require('gulp');
 const concat = require('gulp-concat');
@@ -32,6 +23,8 @@ function cleanFolder(path, opt_pathPrefix, opt_pathSuffix) {
     return del([folderPathPrefix + folderPath + folderPathSuffix]);
 }
 
+exports.cleanFolder = cleanFolder;
+
 /**
  * Concats the given source files to one given file and copy it to the given destination path
  * 
@@ -47,6 +40,8 @@ function concatFiles(srcPath, destPath, outputFile, opt_srcOptions, opt_destOpti
         .pipe(concat(outputFile))
         .pipe(gulp.dest(destPath, opt_destOptions));
 }
+
+exports.concatFiles = concatFiles;
 
 /**
  * Copies the given source files to the given destination path
@@ -68,6 +63,8 @@ function copyFiles(srcPath, destPath, opt_isFlatten, opt_srcOptions, opt_destOpt
         .pipe(gulp.dest(destPath, opt_destOptions));
 }
 
+exports.copyFiles = copyFiles;
+
 /**
  * Creates a file with the given content and informations
  * 
@@ -82,6 +79,8 @@ function createFile(destPath, fileName, fileExtension, fileContent, cb) {
         cb(result);
     });
 }
+
+exports.createFile = createFile;
 
 /**
  * Minifies the given source images and copies they to the given destination path
@@ -117,6 +116,8 @@ function minifyImages(srcPath, destPath, opt_imageminConfig, opt_srcOptions, opt
         .pipe(gulp.dest(destPath, opt_destOptions));
 }
 
+exports.minifyImages = minifyImages;
+
 /**
  * Minifies the given source JSON Objects and copies they to the given destination path
  * 
@@ -134,6 +135,8 @@ function minifyJSON(srcPath, destPath, opt_jsonminifyConfig, opt_srcOptions, opt
         .pipe(flatten())
         .pipe(gulp.dest(destPath, opt_destOptions));
 }
+
+exports.minifyJSON = minifyJSON;
 
 /**
  * Zip the given source path content into the given destination path with the given project informations
@@ -154,3 +157,5 @@ function zipping(srcPath, projectName, projectVersion, destPath, opt_zipConfig, 
         .pipe(zip(outputFile, zipConfig))
         .pipe(gulp.dest(destPath, opt_destOptions));
 }
+
+exports.zipping = zipping;
