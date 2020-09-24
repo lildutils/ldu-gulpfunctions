@@ -1,7 +1,3 @@
-exports.concatCSS = concatCSS;
-exports.minifyCSS = minifyCSS;
-
-
 const gulp = require('gulp');
 const concat = require('gulp-concat');
 const cssmin = require('gulp-clean-css');
@@ -28,6 +24,8 @@ function concatCSS(srcPath, destPath, opt_fileName, opt_sassConfig, opt_srcOptio
         .pipe(gulp.dest(destPath, opt_destOptions));
 }
 
+exports.concatCSS = concatCSS;
+
 /**
  * Minifies style files and copies they to given destination path
  * 
@@ -46,3 +44,5 @@ function minifyCSS(srcPath, destPath, opt_fileName, opt_cssminConfig, opt_srcOpt
         .pipe(rename(outputFile + '.css'))
         .pipe(gulp.dest(destPath, opt_destOptions));
 }
+
+exports.minifyCSS = minifyCSS;

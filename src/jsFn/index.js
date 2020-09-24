@@ -1,7 +1,3 @@
-exports.concatJS = concatJS;
-exports.minifyJS = minifyJS;
-
-
 const gulp = require('gulp');
 const concat = require('gulp-concat');
 const jsminify = require('gulp-js-minify');
@@ -34,6 +30,8 @@ function concatJS(srcPath, destPath, opt_fileName, opt_tsConfig, opt_srcOptions,
         .pipe(gulp.dest(destPath, opt_destOptions));
 }
 
+exports.concatJS = concatJS;
+
 /**
  * Minifies script files and copies they to given destination path
  * 
@@ -53,3 +51,5 @@ function minifyJS(srcPath, destPath, opt_fileName, opt_jsminifyConfig, opt_srcOp
         .pipe(rename(outputFile + '.js'))
         .pipe(gulp.dest(destPath, opt_destOptions));
 }
+
+exports.minifyJS = minifyJS;

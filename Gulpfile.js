@@ -1,5 +1,6 @@
 const packageJson = require('./package.json');
 const gulp = require('gulp');
+const insert = require('gulp-insert');
 const del = require('del');
 const exec = require('child_process').exec;
 const merge = require('merge-stream');
@@ -43,6 +44,9 @@ gulp.task('copySource', copySource);
 
 function copyPackageJson() {
     return gulp.src(['package.json'])
+        .pipe(insert.transform(function () {
+            return '{"name":"' + packageJson.name + '","version":"' + packageJson.version + '"}';
+        }))
         .pipe(gulp.dest(configs.dist + '/'));
 }
 copyPackageJson.displayName = 'copy:package-json';
@@ -71,7 +75,7 @@ copyZip.displayName = 'copy:zip';
 gulp.task('copyZip', copyZip);
 
 function cleanZip() {
-    return del([configs.dist + '/' + packageJson.name + '*.tgz']);
+    return del([configs.dist + '/*.tgz']);
 }
 cleanZip.displayName = 'clean:zip';
 gulp.task('cleanZip', cleanZip);

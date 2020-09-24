@@ -1,18 +1,18 @@
-# ldu-gulpfunctions
+# @ldu-devtools/gulpfunctions
 
 ## BuildFunctions
 
 Build Functions for you can build your project, and for easy manage Gulpfile.js build tasks. To use it, you can import it in your Gulpfile.js
 
-```js
-const buildFn = require('ldu-gulpfunctions').buildFn;
+``` js
+const buildFn = require('@ldu-devtools/gulpfunctions').buildFn;
 ```
 
 ### cleanFolder
 
 Cleans the folder content (files and subfolders recursively) under given path
 
-```js
+``` js
 buildFn.cleanFolder('temp/path');
 // NOTE: you can chain this with another Gulp Task
 ```
@@ -21,7 +21,7 @@ buildFn.cleanFolder('temp/path');
 
 Concats the given source files to one given file and copy it to the given destination path
 
-```js
+``` js
 buildFn.concatFiles([
     'temp/source/one.js',
     'temp/source/*.js'
@@ -34,7 +34,7 @@ buildFn.concatFiles([
 
 Copies the given source files to the given destination path
 
-```js
+``` js
 buildFn.copyFiles([
     'temp/source/*.html',
     'temp/source/one.js',
@@ -48,7 +48,7 @@ buildFn.copyFiles([
 
 Creates a file with the given content and informations
 
-```js
+``` js
 buildFn.createFile('temp/dist', 'my-file', '.php', '<?php echo php_info()?>', callBack);
 // produces: ./temp/dist/my-file.php with content - '<?php echo php_info()?>'
 // NOTE: this is an async call
@@ -59,7 +59,7 @@ buildFn.createFile('temp/dist', 'my-file', '.php', '<?php echo php_info()?>', ca
 
 Minifies the given source images and copies they to the given destination path
 
-```js
+``` js
 buildFn.minifyImages([
     'temp/images',
     'temp/icons'
@@ -72,38 +72,38 @@ buildFn.minifyImages([
 
 Minifies the given source JSON Objects and copies they to the given destination path
 
-```js
+``` js
 buildFn.minifyJSON(([
-    'temp/configs/server*-config.json',
-    'temp/configs/profile*-config.json'
-], 'temp/dist/configs');
-// produces: all given JSON minified and copied to ./temp/dist/configs
-// NOTE: you can chain this with another Gulp Task
+            'temp/configs/server*-config.json',
+            'temp/configs/profile*-config.json'
+        ], 'temp/dist/configs');
+        // produces: all given JSON minified and copied to ./temp/dist/configs
+        // NOTE: you can chain this with another Gulp Task
 ```
 
 ### zipping
 
 Zip the given source path content into the given destination path with the given project informations
 
-```js
+``` js
 buildFn.zipping(('temp/dist/**/*', 'test-project', '1.0.0-SNAPSHOT', 'temp/build');
-// produces: test-project-1.0.0-SNAPSHOT-yyyymmddHHMMss.zip file under ./temp/build/
-// NOTE: you can chain this with another Gulp Task
+        // produces: test-project-1.0.0-SNAPSHOT-yyyymmddHHMMss.zip file under ./temp/build/
+        // NOTE: you can chain this with another Gulp Task
 ```
 
 ## CSSFunctions
 
 CSS Functions for you can easy manage Gulpfile.js build tasks for *.css* files. To use it, you can import it in your Gulpfile.js
 
-```js
-const cssFn = require('ldu-gulpfunctions').cssFn;
+``` js
+const cssFn = require('@ldu-devtools/gulpfunctions').cssFn;
 ```
 
 ### concatCSS
 
 Compiles and concats style files and copies they to given destination path
 
-```js
+``` js
 cssFn.concatCSS('temp/*.scss', 'temp/dist');
 // produces: a compiled and concatenated ./temp/dist/styles.css file
 // NOTE: you can chain this with another Gulp Task
@@ -113,7 +113,7 @@ cssFn.concatCSS('temp/*.scss', 'temp/dist');
 
 Minifies style files and copies they to given destination path
 
-```js
+``` js
 cssFn.minifyCSS('temp/dist/styles.css', 'temp/dist');
 // produces: a minified ./temp/dist/styles.min.css file
 // NOTE: you can chain this with another Gulp Task
@@ -123,15 +123,15 @@ cssFn.minifyCSS('temp/dist/styles.css', 'temp/dist');
 
 HTML Functions for you can easy manage Gulpfile.js build tasks for *.html* files. To use it, you can import it in your Gulpfile.js
 
-```js
-const htmlFn = require('ldu-gulpfunctions').htmlFn;
+``` js
+const htmlFn = require('@ldu-devtools/gulpfunctions').htmlFn;
 ```
 
 ### minifyHTML
 
 Minifies HTML files and copies they to given destination path
 
-```js
+``` js
 htmlFn.minifyHTML([
     'temp/dist/views/*.html',
     'temp/dist/pages/*.html'
@@ -144,15 +144,15 @@ htmlFn.minifyHTML([
 
 JS Functions for you can easy manage Gulpfile.js build tasks for *.js* files. To use it, you can import it in your Gulpfile.js
 
-```js
-const jsFn = require('ldu-gulpfunctions').jsFn;
+``` js
+const jsFn = require('@ldu-devtools/gulpfunctions').jsFn;
 ```
 
 ### concatJS
 
 Compiles and concats script files and copies they to given destination path
 
-```js
+``` js
 jsFn.concatJS('temp/*.ts', 'temp/dist');
 // produces: a compiled and concatenated ./temp/dist/scripts.js file
 // NOTE: you can chain this with another Gulp Task
@@ -162,7 +162,7 @@ jsFn.concatJS('temp/*.ts', 'temp/dist');
 
 Minifies script files and copies they to given destination path
 
-```js
+``` js
 jsFn.minifyJS('temp/dist/scripts.js', 'temp/dist');
 // produces: a minified ./temp/dist/scripts.min.js file
 // NOTE: you can chain this with another Gulp Task
@@ -172,15 +172,15 @@ jsFn.minifyJS('temp/dist/scripts.js', 'temp/dist');
 
 PHP Functions for you can easy manage Gulpfile.js build tasks for *.php* files. To use it, you can import it in your Gulpfile.js
 
-```js
-const phpFn = require('ldu-gulpfunctions').phpFn;
+``` js
+const phpFn = require('@ldu-devtools/gulpfunctions').phpFn;
 ```
 
 ### concatPHP
 
 Concats PHP files and copies they to given destination path
 
-```js
+``` js
 phpFn.concatPHP('temp/*.php', 'temp/dist');
 // produces: a compiled and concatenated ./temp/dist/includes.php file
 // NOTE: you can chain this with another Gulp Task
@@ -190,7 +190,7 @@ phpFn.concatPHP('temp/*.php', 'temp/dist');
 
 Minifies PHP files and copies they to given destination path
 
-```js
+``` js
 phpFn.minifyPHP('temp/dist/includes.php', 'temp/dist');
 // produces: a minified ./temp/dist/includes.min.php file
 // NOTE: you can chain this with another Gulp Task
@@ -202,7 +202,7 @@ phpFn.minifyPHP('temp/dist/includes.php', 'temp/dist');
 
 Installs all of the dependencies for this project
 
-```sh
+``` sh
 npm install
 ```
 
@@ -210,7 +210,7 @@ npm install
 
 Builds this project to the **dist** folder and creates a zip package from the dist content into the **build** folder
 
-```sh
+``` sh
 gulp build
 ```
 
