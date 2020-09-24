@@ -1,8 +1,4 @@
-exports.concatPHP = concatPHP;
-exports.minifyPHP = minifyPHP;
-
-
-const buildUtils = require('ldu-gulputils').buildUtils;
+const buildUtils = require('@ldu-devtools/gulputils').buildUtils;
 const phpmin = require('@cedx/gulp-php-minify');
 const gulp = require('gulp');
 const concat = require('gulp-concat');
@@ -27,6 +23,8 @@ function concatPHP(srcPath, destPath, opt_fileName, opt_srcOptions, opt_destOpti
         .pipe(gulp.dest(destPath, opt_destOptions));
 }
 
+exports.concatPHP = concatPHP;
+
 /**
  * Minifies PHP files and copies they to given destination path
  * 
@@ -46,3 +44,5 @@ function minifyPHP(srcPath, destPath, opt_fileName, opt_phpMinifyConfig, opt_src
         .pipe(rename(outputFile + '.php'))
         .pipe(gulp.dest(destPath, opt_destOptions));
 }
+
+exports.minifyPHP = minifyPHP;
