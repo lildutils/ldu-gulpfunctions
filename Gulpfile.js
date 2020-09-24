@@ -1,39 +1,23 @@
 const packageJson = require('./package.json');
 const gulp = require('gulp');
 const insert = require('gulp-insert');
-const del = require('del');
-const exec = require('child_process').exec;
-const merge = require('merge-stream');
 
 const configs = {
-    "base": "src",
-    "build": "build",
-    "dist": "dist",
-    "watching": {
-        "events": "all",
-        "delay": 500
+    base: "src",
+    build: "build",
+    dist: "dist",
+    tmp: "tmp",
+    zip: "build",
+    lib: "lib",
+    watching: {
+        events: "all",
+        delay: 500
     },
-    "others": [
+    others: [
         "README.md",
         "LICENSE"
     ]
 };
-
-function cleanDist() {
-    return del([configs.dist + '/**/*']);
-}
-cleanDist.displayName = 'clean:dist';
-gulp.task('clean', cleanDist);
-
-function copyFiles() {
-    return merge(
-        copySource(),
-        copyPackageJson(),
-        copyOthers()
-    );
-}
-copyFiles.displayName = 'copy:files';
-gulp.task('copy', copyFiles);
 
 function copySource() {
     return gulp.src([configs.base + '/**/*'])
@@ -59,33 +43,10 @@ function copyOthers() {
 copyOthers.displayName = 'copy:others';
 gulp.task('copyOthers', copyOthers);
 
-function createZip(cb) {
-    exec('cd ' + configs.dist + ' && npm pack', function (result) {
-        cb(result);
-    });
-};
-createZip.displayName = 'create:zip';
-gulp.task('createZip', createZip);
-
-function copyZip() {
-    return gulp.src([configs.dist + '/*.tgz'])
-        .pipe(gulp.dest(configs.build + '/'));
-}
-copyZip.displayName = 'copy:zip';
-gulp.task('copyZip', copyZip);
-
-function cleanZip() {
-    return del([configs.dist + '/*.tgz']);
-}
-cleanZip.displayName = 'clean:zip';
-gulp.task('cleanZip', cleanZip);
-
 const buildProject = gulp.series(
-    cleanDist,
-    copyFiles,
-    createZip,
-    copyZip,
-    cleanZip
+    copySource,
+    copyPackageJson,
+    copyOthers
 );
 gulp.task('build', buildProject);
 

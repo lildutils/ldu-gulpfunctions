@@ -74,11 +74,11 @@ Minifies the given source JSON Objects and copies they to the given destination 
 
 ``` js
 buildFn.minifyJSON(([
-            'temp/configs/server*-config.json',
-            'temp/configs/profile*-config.json'
-        ], 'temp/dist/configs');
-        // produces: all given JSON minified and copied to ./temp/dist/configs
-        // NOTE: you can chain this with another Gulp Task
+    'temp/configs/server*-config.json',
+    'temp/configs/profile*-config.json'
+], 'temp/dist/configs');
+// produces: all given JSON minified and copied to ./temp/dist/configs
+// NOTE: you can chain this with another Gulp Task
 ```
 
 ### zipping
@@ -87,8 +87,8 @@ Zip the given source path content into the given destination path with the given
 
 ``` js
 buildFn.zipping(('temp/dist/**/*', 'test-project', '1.0.0-SNAPSHOT', 'temp/build');
-        // produces: test-project-1.0.0-SNAPSHOT-yyyymmddHHMMss.zip file under ./temp/build/
-        // NOTE: you can chain this with another Gulp Task
+// produces: test-project-1.0.0-SNAPSHOT-yyyymmddHHMMss.zip file under ./temp/build/
+// NOTE: you can chain this with another Gulp Task
 ```
 
 ## CSSFunctions
