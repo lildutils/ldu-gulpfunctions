@@ -1,20 +1,15 @@
-# IDE
-/.vscode/
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# generated
-/build/
-/DEV-INF/
-/dist/
-/tmp/
-/zip/
+## generated
+build/
+dist/
+tmp/
+zip/
 
-# dependencies
-/bower_components/
-/node_modules/
-/libs/
-/lib/
+## dependencies
+node_modules/
 
-# misc
-/npm-debug.log
-/package-lock.json
+## misc
 .npmrc
+package-lock.json
+npm-debug.log

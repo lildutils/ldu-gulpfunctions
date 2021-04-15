@@ -214,9 +214,9 @@ Builds this project to the **dist** folder and creates a zip package from the di
 gulp build
 ```
 
-## About
+## Further Help
 
-To get more informations about this project, or if you have any question or suggestion, please send an email to [me](mailto:info@lildworks.hu)
+To get more informations about this project, or if you have any question or suggestion, please send an email to [me](mailto:info@lildutils.hu)
 
 ## 
 
