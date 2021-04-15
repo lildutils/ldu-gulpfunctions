@@ -3,19 +3,19 @@ const gulp = require('gulp');
 const insert = require('gulp-insert');
 
 const configs = {
-    base: "src",
-    build: "build",
-    dist: "dist",
-    tmp: "tmp",
-    zip: "build",
-    lib: "lib",
+    base: 'src',
+    build: 'build',
+    dist: 'dist',
+    tmp: 'tmp',
+    zip: 'build',
+    lib: 'lib',
     watching: {
-        events: "all",
+        events: 'all',
         delay: 500
     },
     others: [
-        "README.md",
-        "LICENSE"
+        'README.md',
+        'LICENSE'
     ]
 };
 
